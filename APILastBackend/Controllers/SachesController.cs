@@ -22,7 +22,24 @@ namespace APILastBackend.Controllers
         {
             return db.Sach;
         }
-
+        [Route("api/Sach/by-name/{name}")]
+        public IQueryable<Sach> GetSach(string name)
+        {
+            var kq=db.Sach.Where(s=>s.Tensach==name);
+            return kq;
+        }
+        [Route("api/Sach/by-author/{tg}")]
+        public IQueryable<Sach> GetSach(string tg)
+        {
+            var kq=db.Sach.Where(s=>s.Tacgia ==tg);
+            return kq;
+        }
+          [Route("api/Sach/by-pb-comp/{nxb}")]
+        public IQueryable<Sach> GetSach(string nxb)
+        {
+            var kq=db.Sach.Where(s=>s.Nhaxuatban ==nxb);
+            return kq;
+        }
         // GET: api/Saches/5
         [Route("api/Sach/detail/{id}")]
         [ResponseType(typeof(Sach))]
